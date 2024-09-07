@@ -3,6 +3,7 @@ import Fetu from '../Fetu/Fetu';
 
 const Feature = () => {
     const [feature, setfeature] = useState([])
+    const [datalode, setdataload] = useState(4)
     useEffect(() => {
         fetch('jobs.json')
             .then(res => res.json())
@@ -16,8 +17,11 @@ const Feature = () => {
             </div>
             <div className='lg:grid grid-cols-2 gap-4 mt-5'>
                 {
-                    feature.map(copyfetu => <Fetu key={feature.id} fetu={copyfetu}></Fetu>)
+                    feature.slice(0, datalode).map(copyfetu => <Fetu key={feature.id} fetu={copyfetu}></Fetu>)
                 }
+            </div>
+            <div className={datalode === feature.length ? "hidden" : ""}>
+                <button className='btn btn-primary mx-auto flex mt-10' onClick={() => setdataload(feature.length)}>See All Jobs</button>
             </div>
         </div>
     );

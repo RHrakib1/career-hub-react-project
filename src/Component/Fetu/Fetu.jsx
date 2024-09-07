@@ -1,4 +1,6 @@
 import React from 'react';
+import { CiLocationOn } from "react-icons/ci";
+import { MdAttachMoney } from "react-icons/md";
 
 const Fetu = ({ fetu }) => {
     const { logo, job_title, company_name, remote_or_onsite, location, job_type, salary } = fetu
@@ -11,12 +13,18 @@ const Fetu = ({ fetu }) => {
                 <button className="btn btn-outline btn-primary">{remote_or_onsite}</button>
                 <button className="btn btn-outline btn-primary">{job_type}</button>
             </div>
-            <div className='flex gap-3  py-2'>
-                <p>Location: {location}</p>
-                <p>Salary: {salary}</p>
+            <div className='flex gap-5  py-2'>
+                <div className='flex items-center gap-2'>
+                    <CiLocationOn className='text-2xl'></CiLocationOn>
+                    <p>Location: {location}</p>
+                </div>
+                <div  className='flex items-center gap-2'>
+                    <MdAttachMoney className='text-2xl'></MdAttachMoney>
+                    <p>Salary: {salary}</p>
+                </div>
             </div>
             <button className="btn bg-blue-600 text-white">View Details</button>
-            
+
         </div>
     );
 };
