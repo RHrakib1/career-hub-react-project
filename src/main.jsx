@@ -10,13 +10,14 @@ import Applid from './Component/Applied/Applid.jsx';
 import Blogs from './Component/Blogs/Blogs.jsx';
 import Statitics from './Statitics/Statitics.jsx';
 import ErrorPage from './Component/ErrorPage/ErrorPage.jsx';
+import Jobdetails from '../public/Jobdetails/Jobdetails.jsx';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
-    errorElement:<ErrorPage></ErrorPage>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',
@@ -32,7 +33,9 @@ const router = createBrowserRouter([
       },
       {
         path: '/applied',
-        element: <Applid></Applid>
+        element: <Applid></Applid>,
+        loader:()=>fetch(`../jobs.json`)
+        
       },
       {
         path: '/blogs',
@@ -41,6 +44,11 @@ const router = createBrowserRouter([
       {
         path: '/statitics',
         element: <Statitics></Statitics>
+      },
+      {
+        path: '/jobdetails/:userid',
+        element: <Jobdetails></Jobdetails>,
+        loader: () => fetch(`../jobs.json`)
       }
     ]
   },

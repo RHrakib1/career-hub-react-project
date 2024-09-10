@@ -1,9 +1,10 @@
 import React from 'react';
 import { CiLocationOn } from "react-icons/ci";
 import { MdAttachMoney } from "react-icons/md";
+import { Link } from 'react-router-dom';
 
 const Fetu = ({ fetu }) => {
-    const { logo, job_title, company_name, remote_or_onsite, location, job_type, salary } = fetu
+    const { id, logo, job_title, company_name, remote_or_onsite, location, job_type, salary } = fetu
     return (
         <div className='bg-white rounded-lg shadow-md p-7 '>
             <img src={logo} alt="" />
@@ -18,12 +19,12 @@ const Fetu = ({ fetu }) => {
                     <CiLocationOn className='text-2xl'></CiLocationOn>
                     <p>Location: {location}</p>
                 </div>
-                <div  className='flex items-center gap-2'>
+                <div className='flex items-center gap-2'>
                     <MdAttachMoney className='text-2xl'></MdAttachMoney>
                     <p>Salary: {salary}</p>
                 </div>
             </div>
-            <button className="btn bg-blue-600 text-white">View Details</button>
+            <Link to={`/jobdetails/${id}`}><button className="btn bg-blue-600 text-white">View Details</button></Link>
 
         </div>
     );
